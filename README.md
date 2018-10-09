@@ -1,6 +1,8 @@
 # loggerBot
 This bot demonstrates the transcript logging middleware in the nodejs SDK. The files `CustomLogger.d.ts` and `CustomLogger.js` contain a custom implementation of the logging middleware.
 
+Logging as set up here is for developmental purposes utilizing the emulator *ONLY*. Under no circumstances should the implementation of logging as seen here should be used in a production environment.
+
 This bot has been created using [Microsoft Bot Framework][10], it shows how to create a simple echo bot with state. The bot maintains a simple counter that increases with each message from the user. This bot example uses [`restify`][1].
 
 # To run the bot
