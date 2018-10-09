@@ -17,7 +17,7 @@ class CustomLogger {
         }
         if (activity.conversation) {
             var logText = util.format('\n Activity Recieved: %s \n', util.inspect(activity));
-            var logfileName = util.format('./logs/log_%s.txt', activity.conversation.id);
+            var logfileName = util.format('%s/log_%s.txt', process.env.logFilePath, activity.conversation.id);
             // tslint:disable-next-line:no-console
             console.log(logText);
             fs.appendFile(logfileName, logText, function(err) {
