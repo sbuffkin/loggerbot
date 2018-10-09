@@ -3,6 +3,7 @@
 
 const path = require('path');
 const restify = require('restify');
+const fs = require('fs');
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
@@ -17,7 +18,7 @@ const { MyBot } = require('./bot');
 // Read botFilePath and botFileSecret from .env file
 // Note: Ensure you have a .env file and include botFilePath and botFileSecret.
 const ENV_FILE = path.join(__dirname, '.env');
-const env = require('dotenv').config({path: ENV_FILE});
+const env = require('dotenv').config({ path: ENV_FILE });
 
 const logger = new TranscriptLoggerMiddleware(new CustomLogger());
 
@@ -28,7 +29,11 @@ const DEV_ENVIRONMENT = 'development';
 // bot name as defined in .bot file
 // See https://aka.ms/about-bot-file to learn more about .bot file its use and bot configuration.
 const BOT_CONFIGURATION = (process.env.NODE_ENV || DEV_ENVIRONMENT);
+const logDir = process.env.logFilePath;
 
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir);
+}
 
 // Create HTTP server
 let server = restify.createServer();
